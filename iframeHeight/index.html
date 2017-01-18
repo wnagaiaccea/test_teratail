@@ -1,0 +1,41 @@
+<body>
+ <div class="frame">
+    <iframe id="mainframe" src="top.html" name="mainframe"></iframe>
+ </div>
+ <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+ <script>
+ //
+ // $(function() {
+ // $('iframe').on('load', function(){
+ //         try {
+ //             $(this).height(0);
+ //             $(this).height(this.contentWindow.document.documentElement.scrollHeight);
+ //             console.log(this.contentWindow.document.documentElement.scrollHeight);
+ //         } catch (e) {
+ //         }
+ // }).trigger('load');
+ // });
+
+ // document.getElementById("mainframe").addEventListener("load",function(){
+ //   try {
+ //       $(this).height(0);
+ //       $(this).height(this.contentWindow.document.documentElement.scrollHeight);
+ //       console.log(this.contentWindow.document.documentElement.scrollHeight);
+ //   } catch (e) {
+ //   }
+ // });
+
+ $(function() {
+$('iframe').on('load', function(){
+           try {
+             $(this).height(0);
+             $(this).height(this.contentWindow.document.documentElement.scrollHeight);
+             console.log(this.contentWindow.document.documentElement.scrollHeight);
+         } catch (e) {
+         }
+ });
+ });
+
+ </script>
+</body>

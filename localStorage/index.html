@@ -1,0 +1,87 @@
+<html>
+<body>
+  https://teratail.com/questions/62370
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <br />>
+  <button id="ma">button1</button>
+  <button id="sa">button2</button>
+  <button id="ka">button3</button>
+  <button id="save1">button3</button>
+      <ul id="list">
+      </ul>
+  </li>
+  </ul>
+
+  <script>
+
+        $(function() {
+          $("#ma").click(function() {
+            $("<textarea>").attr("id","text1").attr("class","text1").appendTo("#list");
+            $('<input type="button">').attr("id","save1").attr("value","保存").appendTo("#list");
+            $('<input type="button">').attr("id","delete1").attr("value","削除").appendTo("#list");
+          //append('<textarea id="text1" class="text1"></textarea><button id="save1">保存</button><button id="delete1"  onClick="history.go(0)">削除</button>');
+          });
+
+          $("#sa").click(function() {
+          $("#list").append('<textarea id="text2" class="text2"></textarea><button id="save2">保存</button><button id="delete2" onClick="history.go(0)">削除</button>');
+          });
+
+          $("#ka").click(function() {
+          $("#list").append('<textarea id="text3" class="text3"></textarea><button id="save3">保存</button><button id="delete3" onClick="history.go(0)">削除</button>');
+  //とりあえず３個ですが実際はは１０個以上作る予定です。
+          });
+       });
+
+  </script>
+<script>
+$(function(){
+    $("#list .text1").val(window.localStorage.getItem("text1"));
+    $("#list .text2").val(window.localStorage.getItem("text2"));
+    $("#list .text3").val(window.localStorage.getItem("text3"));
+
+});
+
+$("#save1").click(function(){
+    //window.localStorage.setItem('text1',  $("#list .text1").val());
+    alert("データ1を保存しました。");
+});
+
+$(document).on('click', '#save2', function(){
+
+    window.localStorage.setItem('text2',  $("#list .text2").val());
+    alert("データ2を保存しました。");
+});
+
+$("#save3").click(function(){
+    window.localStorage.setItem('text3',  $("#list .text3").val());
+    alert("データ3を保存しました。");
+});
+
+
+$("#delete").click(function(){
+    window.localStorage.clear();
+    $("#textarea1").val('');
+    $("#textarea2").val('');
+    $("#textarea3").val('');
+    alert("データを全て削除しました。");
+});
+
+
+$("#delete1").click(function(){
+window.localStorage.removeItem('text1', $("list").val());
+    alert("データ1を削除しました。");
+});
+
+$("#delete2").click(function(){
+window.localStorage.removeItem('text2', $("#list").val());
+    alert("データ1を削除しました。");
+});
+
+$("#delete3").click(function(){
+window.localStorage.removeItem('text3', $("#list").val());
+    alert("データ3を削除しました。");
+});
+</script>
+
+</body>
+</html>

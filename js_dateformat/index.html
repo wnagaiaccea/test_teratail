@@ -1,0 +1,27 @@
+<html>
+<body>
+https://teratail.com/questions/62476
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript">
+    var strDate = "Sat, 14 Jan 2017 10:02:36 +0000";
+    var date = new Date(strDate);
+    console.log(dateFormat(date));
+
+    // dateFormat 関数の定義
+    // http://tacamy.hatenablog.com/entry/2013/03/14/220831
+    function dateFormat(date) {
+      var y = date.getFullYear();
+      var m = date.getMonth() + 1;
+      var d = date.getDate();
+      var w = date.getDay();
+
+      m = ('0' + m).slice(-2);
+      d = ('0' + d).slice(-2);
+
+      // フォーマット整形済みの文字列を戻り値にする
+      return y + '年' + m + '月' + d + '日';
+    }
+
+  </script>
+</body>
+</html>
