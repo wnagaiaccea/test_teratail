@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>ボタンを押したらテーブルの行番号を取るって言うやり方</title>
+</head>
+<body>
+	<table border="1" id="list">
+		<tr>
+			<td><input type="button" id="c" value="編集"></td>
+			<td><input type="text" id="Input" value=""></td>
+		</tr>
+		<tr>
+			<td><input type="button" id="c" value="編集"></td>
+			<td><input type="text" id="Input" value=""></td>
+		</tr>
+		<tr>
+			<td><input type="button" id="c" value="編集"></td>
+			<td><input type="text" id="Input" value=""></td>
+		</tr>
+		<tr>
+			<td><input type="button" id="c" value="編集"></td>
+			<td><input type="text" id="Input" value=""></td>
+		</tr>
+
+	</table>
+	<table id="edit" style="display:none">
+		<tr>
+			<th>行番号</th>
+			<td><input type="text" id="key" value="" readonly="true"/></td>
+		</tr>
+		<tr>
+			<th>VALUE </th>
+			<td><input type="text" id="value" value="" /> </td>
+		</tr>
+		<tr>
+			<td colspan=2><input type="button" id="commit" value="更新" /></td>
+		</tr>
+	</table>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$("[id=c]").click(function(){
+	var index = $("[id=c]").index(this);
+	var value =	$("[id=Input]").eq(index).val();
+
+	$("#value").val(value);
+
+	$("#edit").show();
+});
+$("#list tr").click( function(){
+  	$("#key").val($("tr").index(this));
+
+});
+$("#commit").click(function(){
+	var index = $("#key").val();
+	console.log($("[id=Input]").eq(index));
+	var value = $("#value").val();
+	$("[id=Input]").eq(index).val(value);
+
+	$("#edit").hide();
+});
+</script>

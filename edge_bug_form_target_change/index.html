@@ -1,0 +1,52 @@
+<html>
+<head>
+  <title>Edgeのバグ！？formのターゲットを動的に変更してもtargetが変更できない</title>
+</head>
+<body>
+<form id="mainform"  action="" >
+<input type="button" id="yahoo" value="yahoo" />
+</form>
+
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<script>
+
+	var form = $("#mainform");
+  $("#yahoo").on("click", function(){
+    // Edgeも動きます。
+    // window.open("","win","width=900,height=480").location = "http://yahoo.co.jp";
+
+    // Edge:NG 開いたwinでなく。呼び出したウィンドウがジャンプします。
+    // win = window.open("","win","width=900,height=480");
+    // win.location = "";
+    //
+    // var currentForm = $("#mainform").clone();
+    // currentForm.attr("action","http://yahoo.co.jp");
+    // currentForm.attr("target",win.name);
+    // currentForm.submit();
+
+    // Edge:NG 上と同じく呼び出したウィンドウがジャンプします
+    // win = window.open("","win","width=900,height=480");
+    // var currentForm = $("#mainform").clone();
+    // currentForm.attr({"action":"http://yahoo.co.jp","target":win.name});
+    // currentForm.submit();
+
+    // Methodの切り替えも意味はない
+    // win = window.open("","win","width=900,height=480");
+    // var currentForm = $("#mainform").clone();
+    // currentForm.attr({"Method":"GET","action":"http://yahoo.co.jp","target":win.name});
+    // currentForm.submit();
+
+    // 無理矢理
+    win = window.open("","win","width=900,height=480");
+    var newForm = $("<form id='newform' action='http://yahoo.co.jp' target='" + win.name + "'>");
+    newForm.html($("#mainform").clone().html());
+    newForm.submit();
+
+    return false;
+
+  });
+</script>
+</body>
+</html>

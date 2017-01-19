@@ -1,0 +1,35 @@
+<html>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="jquery.xdomainajax.js"></script>
+<body>
+<script>
+$.ajax({
+//    url: 'http://rss.rssad.jp/rss/itmatmarkit/rss.xml?rss',
+//    url: 'http://feeds.rssboard.org/rssboard?format=xml',
+url: 'http://on-ze.com/feed',
+
+    type: 'get',
+    dataType: 'xml',
+    timeout: 5000,
+    success: function(xml, status) {
+      response(xml.responseText, status);
+    }
+});
+
+function response(responseText, status){
+  if (status != 'success') return ;
+  $('#feed').wrapInner('<ul></ul>');
+  $(responseText).find('item').each(parserRSS);
+}
+
+function parserRSS(i){
+  var title = $(this).find('title').text();
+  var link = $(this).find('link').text();
+  var description = $(this).find('description').text();
+  var update = $(this).find('pubDate').text();
+  $('#feed').find('ul').append('<li><strong><a href="' + link + '">>' + title + '<</a></strong><br>' + description + "<br />" + update +'<hr></li>');
+}
+</script>
+<div id="feed"></div>
+</body>
+</html>
