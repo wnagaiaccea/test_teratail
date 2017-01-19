@@ -27,7 +27,24 @@ function parserRSS(i){
   var link = $(this).find('link').text();
   var description = $(this).find('description').text();
   var update = $(this).find('pubDate').text();
+  var date = new Date(update);
+  var update = (dateFormat(date)); // これを出力します。
   $('#feed').find('ul').append('<li><strong><a href="' + link + '">>' + title + '<</a></strong><br>' + description + "<br />" + update +'<hr></li>');
+}
+
+// dateFormat 関数の定義
+// http://tacamy.hatenablog.com/entry/2013/03/14/220831
+function dateFormat(date) {
+var y = date.getFullYear();
+var m = date.getMonth() + 1;
+var d = date.getDate();
+var w = date.getDay();
+
+m = ('0' + m).slice(-2);
+d = ('0' + d).slice(-2);
+
+// フォーマット整形済みの文字列を戻り値にする
+return y + '年' + m + '月' + d + '日';
 }
 </script>
 <div id="feed"></div>
