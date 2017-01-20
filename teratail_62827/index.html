@@ -1,0 +1,36 @@
+<html>
+
+<body>
+  <style>
+  .gallery-img {
+  overflow: hidden;
+  width: 100px;/* トリミングしたい枠の幅 */
+  height: 100px;/* トリミングしたい枠の高さ */
+  position: relative;
+  display: inline-block;
+}
+.gallery-img img {
+  position: absolute;
+  width: auto;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+  </style>
+<script>
+
+document.write('');
+for (i=1; i<=13; i++) {
+  document.write('<div class="gallery-img"><a href="https://test.jp/site/test/' + i + '.jpg"><img src="https://9to5mac.files.wordpress.com/2017/01/lifeproof-nuud-iphone-7.jpg?quality=82&strip=all&w=1000&strip=all&w=1500&h=0"></a></p>');
+}
+document.write('');
+
+
+</script>
+<div class="gallery-img"><a href="https://test.jp/site/test/1.jpg"><img src="https://test.jp/site/test/1.jpg"></a></div>
+</body>
+</html>
