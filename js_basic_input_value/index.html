@@ -1,0 +1,19 @@
+<html>
+<body>
+  <script language="JavaScript">
+function inq_checked(){
+    var elements = document.getElementsByName('room_check') ;
+    for(var i = 0 ; i < elements.length ; i ++){
+      if(elements[i].checked == true){
+        alert(elements[i].value);
+      }
+    }
+}
+</script>
+https://teratail.com/questions/62592
+<button type="button"  onclick="javascript:inq_checked();">チェックした項目</button>
+<input type="checkbox" name="room_check" value="赤"></label>
+<input type="checkbox" name="room_check" value="青"></label>
+<input type="checkbox" name="room_check" value="黄"></label>
+</body>
+</html>
