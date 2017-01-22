@@ -1,0 +1,19 @@
+<html>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<body>
+<script>
+  $( function() {
+      $(document).ready( function() {    // ①
+          $('body').append("<img class='hoge' src='img_logo.png'/>");
+      });
+
+      $(document).on('click','.hoge', function(){  // ②
+        // この処理が動かず困っています。
+        alert('Hello');
+      });
+  });
+</script>
+</body>
+
+</html>
