@@ -1,0 +1,51 @@
+<html>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<body>
+  <div class="message-list"></div>
+  <div class="message-alarm-div"></div>
+</body>
+</html>
+<script>
+$(function(){
+
+    setInterval(function(){
+    reload();
+  },5000);
+
+  function reload(){
+
+    $.ajax({
+    type: 'GET',
+    url: 'messages.json',
+    dataType: 'json'
+  }).done(function(data) {
+    var all_message_num = $('.message-list').length;
+
+    if (all_message_num !== data.length){
+      var data_num = data.length;
+      var suuzi = data.length - all_message_num;
+
+      var htm =
+        '<div class="message-alarm">' +
+          suuzi +
+        '件の新着メッセージを表示' +
+        '</div>';
+      $('.message-alarm-div').html(htm);
+    };
+    click(suuzi,data);
+    });
+    function click(suuzi,data){
+        $('.message-alarm-wrapper').on('click', function(){
+        for (var i = suuzi; i >0; i--){
+          var num = i;
+          var numm = num -1;
+        var html_tag = buildNewMessage(data[numm]);
+        $('.message-lists').prepend(html_tag);
+        $('.message-alarm-div').empty(html_tag);
+        }
+      });
+      }
+  }
+});
+
+</script>

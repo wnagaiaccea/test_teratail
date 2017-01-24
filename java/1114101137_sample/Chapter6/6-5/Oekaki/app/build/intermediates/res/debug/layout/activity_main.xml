@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="保存"
+            android:id="@+id/saveButton" />
+        <RadioGroup
+            android:id="@+id/colorRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="黒"
+                android:id="@+id/black"
+                android:checked="true" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="赤"
+                android:id="@+id/red"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="緑"
+                android:id="@+id/green"
+                android:checked="false" />
+        </RadioGroup>
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:id="@+id/undoButton" />
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="消去"
+            android:id="@+id/clearButton" />
+    </LinearLayout>
+    <com.example.o2.oekaki.CanvasView
+        android:id="@+id/MyView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </com.example.o2.oekaki.CanvasView>
+
+</LinearLayout>
+<!-- From: file:/Users/o2/Documents/Work/Android2015/AChap6/Samples/6-5/Oekaki/app/src/main/res/layout/activity_main.xml -->
