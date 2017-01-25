@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
    <head>
+     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
       <style type="text/css"></style>
       <meta charset="UTF-8">
       <title>Document</title>
@@ -46,13 +48,52 @@
             padding-bottom:4px;
             }
 
-            -->
+            .btnjq {
+            float:left;
+            width:19%;
+            margin:0 1% 1.5% 0;
+            height: 80px;
+            font-size:1.5em;
+            position:relative;
+            display:block;
+            outline: none;
+            border: 0;
+            padding:5px;
+            color:#fff;
+            border-radius:3px;
+            text-align:center;
+            text-decoration: none;
+            text-shadow:1px 1px 0 rgba(255,255,255,0.3);
+            /* gray */
+            background:#a9a9a9;
+            box-shadow:0 5px 0 #696969;
+            }
+                      -->
       </style>
+      <script>
+      $(function () {
+        $(".btnjq").hover(
+            function () {
+                $(this).css("background","#696969")
+                .css("box-shadow","none")
+                .css("transform","translate3d(0px, 5px, 1px)");
+              },
+              function () {
+                $(this).css("background","#a9a9a9")
+                .css("box-shadow","1px 1px 0 rgba(255,255,255,0.3)");
+
+              }
+          );
+      });
+      </script>
    </head>
    <body>
       <div>
          <button type="submit" class="btn" name="ボタン" id="btn1" >
             ボタン
          </button>
+            <button type="submit" class="btnjq" name="ボタン" id="btnjq" >
+               ボタン
+            </button>
       </div>
    </body>
