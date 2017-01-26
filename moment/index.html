@@ -4,11 +4,14 @@
 <body>
 <script>
 var now = moment();
+var dnow = new Date();
 $(function(){
-  $("#print").text(now);
+  $("#moment").append($("<B></B>").text(now));
+  $("#date").append($("<B></B>").text(dnow));
 });
 </script>
 
-<div id="print"></div>
+<lable id="moment">Moment</lable><br>
+<lable id="date">Date </lable>
 </body>
 </html>
