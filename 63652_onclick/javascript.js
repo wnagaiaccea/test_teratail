@@ -6,7 +6,7 @@ javabook.prototype.initialize = function(el) {
    this.$el = el;
    this.$lemenu =$("leftmenu");
    this.$ribox = $(".rightmenu");
-   this.$atomore = $(".atokara")
+   this.$atomore = $(".atokara");
    this.$more = $(".more01");
    this.$moremore = $(".more02");
      this.handleEvents();
@@ -15,13 +15,15 @@ javabook.prototype.initialize = function(el) {
 javabook.prototype.handleEvents = function() {
     var self = this;
       this.$more.on("click", function(){
-    self.slide('$(this).find(".atokara")');
-        // self.slide('$(this).next(".atokara")');
-    //↑..これは弟要素の時、<aside>を作らなかった場合は問題なかった。
+        $(this).parents('aside').siblings('ul.atokara').show();
+
+        return false;
+        });
+      this.$moremore.on("click", function(){
+        $(this).parents('aside').siblings('ul.atokara').hide();
 
         return false;
         });
   };
-
 
 new javabook($(".javabook a"));
