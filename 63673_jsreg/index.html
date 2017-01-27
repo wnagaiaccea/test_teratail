@@ -1,0 +1,40 @@
+<html>
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+$(function() {
+  $("#change").on("click",function() {
+    var text = $("#request").val();
+    //タグとタグの間の文字列を span で囲む
+    text = text.replace(/(<(?!ruby|rt|rp)[^<]*?>)([^<\n]+)(<[^<]*?>)/g,'$1<span class="my_color">$2</span>$3');
+
+    //文頭から最初のタグまでの文字列を span で囲む
+    text = text.replace(/^([^<]+?)</gm,'<span class="my_color">$1</span><');
+
+    //最後のタグから文末までの文字列を span で囲む
+    text = text.replace(/>([^>]+)$/g,'><span class="my_color">$1</span>');
+
+    // タグの狭間のくくりを追加
+    text = text.replace(/(<\/[^>]+>)([^<]+)(<[^>]+?>)/g,'$1<span class="my_color">$2</span>$3');
+
+    // ダサいスペースだけのタグくくりを排除
+    text = text.replace(/<span class="my_color">\s+<\/span>/g,'');
+
+    $("#result").val(text);
+  });
+});
+</script>
+<body>
+<textarea id="request" style="width:800;height:160;">
+  例によって金田邸へ忍び込む。<br>
+   <em class="sesame_dot">例によって</em>とは<ruby><rb>今更</rb><rp>（</rp><rt>いまさら</rt><rp>）</rp></ruby>解釈する必要もない。
+</textarea>
+<br>
+<input type="button" value="変換" id="change"><br>
+<textarea id="result" style="width:800;height:160;">
+</textarea>
+<textarea id="answer" style="width:800;height:160;">
+  <span class="my_color">例によって金田邸へ忍び込む。</span><br>
+ <em class="sesame_dot"><span class="my_color">例によって</span></em><span class="my_color">とは</span><ruby><rb><span class="my_color">今更</span></rb><rp>（</rp><rt>いまさら</rt><rp>）</rp></ruby><span class="my_color">解釈する必要もない。</span>
+</textarea>
+</body>
+</html>
