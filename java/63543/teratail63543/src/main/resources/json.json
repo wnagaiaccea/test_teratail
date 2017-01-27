@@ -1,0 +1,33 @@
+{
+    "data": [
+        {
+            "source": 35,
+            "via0": -1,
+            "target": 35,
+            "cost": 0
+        },
+        {
+            "source": 35,
+            "via0": 0,
+            "via1": 2,
+            "target": 36,
+            "cost": 87
+        },
+        {
+            "source": 35,
+            "via0": 0,
+            "via1": 1,
+            "via2": 3,
+            "target": 37,
+            "cost": 78
+        },
+        {
+            "source": 35,
+            "via0": 0,
+            "via1": 1,
+            "via2": 3,
+            "target": 38,
+            "cost": 86
+        }
+    ]
+}
