@@ -1,0 +1,35 @@
+<html>
+<head>
+  <title>javascript 巨大な整数の足し算について</title>
+  <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+</head>
+<body>
+  <h1>javascript 巨大な整数の足し算について</h1>
+  http://language-and-engineering.hatenablog.jp/entry/20150513/JavaScriptIeee754OutOfRangeError
+
+<div id="result"></div>
+
+<script>
+test( "3602879701896300");
+test( "36028797018963000");
+test( "36028797018963968");
+test( "36028797018963999");
+test( "360287970189639999999");
+  function test(value){
+    value = parseInt(value);
+//    console.log(value.toFixed(0));
+    $("#result").append($("<div>").text(value));
+    $("#result").append($("<div>").text(value.toFixed(0)));
+    value += 1;
+    $("#result").append($("<div>").text("= +1 "));
+
+//    console.log(value.toFixed(0));
+    $("#result").append($("<div>").text(value));
+    $("#result").append($("<div>").text(value.toFixed(0)));
+    $("#result").append($("<div>").text("=================="));
+  }
+
+</script>
+</body>
+</html>
