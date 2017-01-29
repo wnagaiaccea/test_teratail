@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<htmel>
+    <head>
+        <meta charset = "UTF-8">
+        <title> キャンバス </title>
+
+        <style>
+            canvas{
+                border:solid 1px;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id = "main" width = "700" height = "700">
+        </canvas>
+
+        <br>
+        <input type = "button" value = "正三角形" onclick = "triangle()">
+        <br>
+
+正三角形:
+        <br>
+        頂点 x = <input type = "number" id = "x4" value = "10">
+        頂点 y = <input type = "number" id = "y4" value = "10">
+        辺の長さ l = <input type = "number" id = "l4" value = "10">
+        <br>
+
+        <script>
+            function triangle(){
+                var canvas = document.getElementById("main");
+                var context = canvas.getContext("2d");
+                var start_x = 1 * document.getElementById("x4").value;
+                var start_y = 1 * document.getElementById("y4").value;
+                var l = 1 * document.getElementById("l4").value;
+
+                context.beginPath();
+                var x = 0 + start_x;
+                var y = -2 * l * Math.sqrt(3) / 3 + start_y;
+                console.log("context.moveTo("+x+","+ y + ");");
+                context.moveTo(x, y);
+                var x = ( -1 * l  )+ start_x;
+                var y = l * Math.sqrt(3) / 3 + start_y;
+                console.log("context.lineTo("+x+","+ y + ");");
+                context.lineTo(x, y);
+                var x = l  + start_x;
+                var y = l * Math.sqrt(3) / 3 + start_y;
+                console.log("context.lineTo("+x+","+ y + ");");
+                context.lineTo(x, y);
+                context.closePath();
+                context.stroke();
+
+
+            }
+        </script>
+    </body>
+</html>
