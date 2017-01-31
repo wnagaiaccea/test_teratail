@@ -1,17 +1,50 @@
 <html>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js" ></script>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <body>
 <script>
-var now = moment();
-var dnow = new Date();
 $(function(){
-  $("#moment").append($("<B></B>").text(now));
-  $("#date").append($("<B></B>").text(dnow));
+
+  var unixTimestamp = castDateToUnixtime( new Date()) ;
+
+  var now = castUnixtimeToDate(unixTimestamp);
+
+//  showDatevalue(now);
+
+
+  $("#change").on("click",function(){
+      var datevalue = $("#datevalue").val();
+      var date = new Date(datevalue);
+      console.log("date:",date);
+      if(date=="Invalid Date"){
+        console.log("format !");
+        return;
+      }
+      var unixtime = castDateToUnixtime(date);
+      // 投げる
+
+      showDatevalue(castUnixtimeToDate(unixtime));
+  });
 });
+function castDateToUnixtime(date){
+  return Math.floor( date.getTime() / 1000 ) ;
+}
+function castUnixtimeToDate(uxtime){
+  var date =  new Date(uxtime * 1000 );
+  console.log(date);
+  return date;
+}
+function showDatevalue(date){
+  var options = { year:"numeric", month:"2-digit",day:"2-digit",hour12: false ,hour:"2-digit" ,minute:"2-digit"};
+  $("#date").append($("<B></B>").text(date.toLocaleString()));
+  $("#date_enus").append($("<B></B>").text(date.toLocaleString("en-US",options)));
+}
 </script>
 
-<lable id="moment">Moment</lable><br>
-<lable id="date">Date </lable>
+<lable id="date">Date toLocaleString</lable><br>
+<lable id="date_enus">Date toLocaleString(en-US)</lable><br>
+<hr>
+input <br>
+<input type="text" id="datevalue" /><input type="button" id="change" />
+
 </body>
 </html>

@@ -1,0 +1,39 @@
+<html>
+<body>
+  <script>
+  test(1);
+  test(2);
+  test(3);
+  test(69);
+  test(70);
+  test(71);
+  test(171);
+  function test(num){
+    console.log(role(num),name(num));
+  }
+  function name(num){
+    switch(num) {
+      case 1: return("友永");
+      case 2: return("荒木");
+      case 3: return("高橋");
+      case 69: return("板東");
+      case 70: return("江川");
+      case 71: return("イチロー");
+      case 171: return("安西");
+    }
+    return "";
+  }
+  function role(num){
+    switch(true) {
+      case (num>=100):
+        return "育成";
+      case num < 70:
+        return "選手";
+      case num>=70:
+        return "指導";
+    }
+    return "";
+  }
+  </script>
+</body>
+</html>
