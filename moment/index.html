@@ -5,42 +5,40 @@
 $(function(){
 
   var unixTimestamp = castDateToUnixtime( new Date()) ;
-
+  $("#unixtime").val(unixTimestamp);
   var now = castUnixtimeToDate(unixTimestamp);
+  $("#datevalue").val(now.toLocaleString());
 
   $("#change").on("click",function(){
       var datevalue = $("#datevalue").val();
       var date = new Date(datevalue);
-      console.log("date:",date);
       if(date=="Invalid Date"){
         console.log("format !");
         return;
       }
       var unixtime = castDateToUnixtime(date);
       // 投げる
+      $("#unixtime2").val(unixtime);
 
-      showDatevalue(castUnixtimeToDate(unixtime));
+      $("#datevalue2").val(castUnixtimeToDate(unixtime).toLocaleString());
   });
 
-$(function(){
-  $("#moment").append($("<B></B>").text( now.format()));
-  $("#date").append($("<B></B>").text( Date.parse("07/02/2017")));
-  $("#moment2").append($("<B></B>").text( dbtime.format()));
-  $("#date2").append($("<B></B>").text( dnow2.toLocaleDateString() + " " + dnow2.toLocaleTimeString()));
+  function castDateToUnixtime(date){
+    return Math.floor( date.getTime() / 1000 ) ;
+  }
+  function castUnixtimeToDate(uxtime){
+    var date =  new Date(uxtime * 1000 );
+    console.log(date);
+    return date;
+  }
 
 });
-function castDateToUnixtime(date){
-  return Math.floor( date.getTime() / 1000 ) ;
-}
-function castUnixtimeToDate(uxtime){
-  var date =  new Date(uxtime * 1000 );
-  console.log(date);
-  return date;
-}
 </script>
-<lable id="moment">Moment</lable><br>
-<lable id="date">Date </lable><br>
-<lable id="moment2">moment unix </lable><br>
-<lable id="date2">date unix </lable><br>
+<lable >unixtime </lable><input id="unixtime" value="" /><br>
+<lable >date </lable><input id="datevalue" value="" /><br>
+<hr>
+<lable >unixtime </lable><input id="unixtime2" value="" /><br>
+<lable >date </lable><input id="datevalue2" value="" /><br>
+<input type="button" value="" id="change">
 </body>
 </html>
