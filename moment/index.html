@@ -4,14 +4,23 @@
 <body>
 <script>
 var now = moment();
-var dnow = new Date();
+
+var dbtime = moment.unix(1485365986);
+var dnow2 = new Date(1485365986 * 1000);
+
 $(function(){
-  $("#moment").append($("<B></B>").text(now));
-  $("#date").append($("<B></B>").text(dnow));
+
+  $("#moment").append($("<B></B>").text( now.format()));
+  $("#date").append($("<B></B>").text( Date.parse("07/02/2017")));
+  $("#moment2").append($("<B></B>").text( dbtime.format()));
+  $("#date2").append($("<B></B>").text( dnow2.toLocaleDateString() + " " + dnow2.toLocaleTimeString()));
+
 });
 </script>
 
 <lable id="moment">Moment</lable><br>
-<lable id="date">Date </lable>
+<lable id="date">Date </lable><br>
+<lable id="moment2">moment unix </lable><br>
+<lable id="date2">date unix </lable><br>
 </body>
 </html>

@@ -1,0 +1,18 @@
+.wrapper {
+width:1300px;
+}
+
+.header {
+height:50px;
+width:1300px;
+background-color:black;
+color:white;
+font-size:10px;
+}
+
+.headerimg {
+background-img:url(hobby-juku.jpg);
+}
+
+.menu {
+}
