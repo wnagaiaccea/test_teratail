@@ -8,9 +8,6 @@ $(function(){
 
   var now = castUnixtimeToDate(unixTimestamp);
 
-//  showDatevalue(now);
-
-
   $("#change").on("click",function(){
       var datevalue = $("#datevalue").val();
       var date = new Date(datevalue);
@@ -24,6 +21,13 @@ $(function(){
 
       showDatevalue(castUnixtimeToDate(unixtime));
   });
+
+$(function(){
+  $("#moment").append($("<B></B>").text( now.format()));
+  $("#date").append($("<B></B>").text( Date.parse("07/02/2017")));
+  $("#moment2").append($("<B></B>").text( dbtime.format()));
+  $("#date2").append($("<B></B>").text( dnow2.toLocaleDateString() + " " + dnow2.toLocaleTimeString()));
+
 });
 function castDateToUnixtime(date){
   return Math.floor( date.getTime() / 1000 ) ;
@@ -33,18 +37,10 @@ function castUnixtimeToDate(uxtime){
   console.log(date);
   return date;
 }
-function showDatevalue(date){
-  var options = { year:"numeric", month:"2-digit",day:"2-digit",hour12: false ,hour:"2-digit" ,minute:"2-digit"};
-  $("#date").append($("<B></B>").text(date.toLocaleString()));
-  $("#date_enus").append($("<B></B>").text(date.toLocaleString("en-US",options)));
-}
 </script>
-
-<lable id="date">Date toLocaleString</lable><br>
-<lable id="date_enus">Date toLocaleString(en-US)</lable><br>
-<hr>
-input <br>
-<input type="text" id="datevalue" /><input type="button" id="change" />
-
+<lable id="moment">Moment</lable><br>
+<lable id="date">Date </lable><br>
+<lable id="moment2">moment unix </lable><br>
+<lable id="date2">date unix </lable><br>
 </body>
 </html>
