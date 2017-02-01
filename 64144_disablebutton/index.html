@@ -1,0 +1,41 @@
+<html>
+<style>
+.ABC{
+    text-align:center;
+}
+.ABC a:nth-child(1){
+    background: url(img/01.gif) no-repeat;
+    width: 512px;
+    height: 512px;
+    margin: 10px;
+    display: inline-block;
+}
+.ABC a:nth-child(1):hover{
+    background: url(img/01hover.gif) no-repeat;
+    transition:0.3s;
+
+}
+.ABC a:nth-child(2){
+    background: url(img/02.gif) no-repeat;
+    width: 512px;
+    height: 512px;
+    margin: 10px;
+    display: inline-block;
+
+}
+.ABC a:nth-child(2):hover{
+    background: url(img/01hover.gif) no-repeat;
+    transition:0.3s;
+}
+a{
+    backface-visibility: hidden;
+}
+
+</style>
+<body>
+  <div class="ABC">
+    <a href="top.php"></a>
+    <a href="javascript:void(0);" onclick="next_buy();return false;"></a>
+</div>
+</body>
+</html>
