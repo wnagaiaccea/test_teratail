@@ -1,0 +1,35 @@
+<html>
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="icheck.js" ></script>
+<script>
+$(document).ready(function(){
+  $('input').iCheck({
+    checkboxClass: 'icheckbox_minimal-red',
+    radioClass: 'iradio_minimal',
+    increaseArea: '10%',
+    cursor: true,
+  });
+  $('input').on('ifChecked', function(event){
+       var checked = (this.value);
+       var target = 'input[name='+checked+']';
+       console.log("checked",target);
+
+       $(target).val("ほげぇー");
+
+
+  });
+});
+</script>
+
+<body>
+  <div class="checkbox">
+   <label for="hoge001">
+     <div class="icheckbox_minimal-red" aria-checked="false" aria-disabled="true">
+       <input type="checkbox" name="hoges[]" value="fuge001" id="hoge1"></input>
+     </div>
+   </label>
+  </div>
+  <input type="text" name="fuge001" />
+
+</body>
+</html>
