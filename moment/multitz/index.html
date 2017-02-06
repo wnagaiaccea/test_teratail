@@ -1,0 +1,44 @@
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="jstz.js" ></script>
+<script>
+var timezone = jstz.determine();
+$(function(){
+  $.ajax({
+    type: "GET",
+    url: "time.php?timezone=JST",
+    dataType: "script",
+    success: function(msg){
+      $("#timejst").html(msg);
+    }
+  });
+  $.ajax({
+    type: "GET",
+    url: "time.php?timezone=EST",
+    dataType: "script",
+    success: function(msg){
+      $("#timeest").html(msg);
+    }
+  });
+  $.ajax({
+    type: "GET",
+    url: "time.php?timezone="+timezone.name(),
+    dataType: "script",
+    success: function(msg){
+      $("#timethis").html(msg);
+    }
+  });
+
+});
+
+</script>
+</head>
+<body>
+  JST : <div id="timejst"></div><br />
+  EST : <div id="timeest"></div><br />
+  this.locale(<script>document.write(timezone.name());</script>) : <div id="timethis"></div><br />
+
+</body>
+
+</html>
