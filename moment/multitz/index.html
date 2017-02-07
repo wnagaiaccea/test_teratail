@@ -15,10 +15,50 @@ $(function(){
   });
   $.ajax({
     type: "GET",
-    url: "time.php?timezone=EST",
+    url: "time.php?timezone=America/New_York",
     dataType: "script",
     success: function(msg){
       $("#timeest").html(msg);
+    }
+  });
+  $.ajax({
+    type: "GET",
+    url: "time.php?timezone=America/Chicago",
+    dataType: "script",
+    success: function(msg){
+      $("#timecst").html(msg);
+    }
+  });
+  $.ajax({
+    type: "GET",
+    url: "time.php?timezone=America/Dawson_Creek",
+    dataType: "script",
+    success: function(msg){
+      $("#timemst").html(msg);
+    }
+  });
+  $.ajax({
+    type: "GET",
+    url: "time.php?timezone=America/Los_Angeles",
+    dataType: "script",
+    success: function(msg){
+      $("#timepst").html(msg);
+    }
+  });
+  $.ajax({
+    type: "GET",
+    url: "time.php?timezone=America/Anchorage",
+    dataType: "script",
+    success: function(msg){
+      $("#timeakst").html(msg);
+    }
+  });
+  $.ajax({
+    type: "GET",
+    url: "time.php?timezone=Pacific/Honolulu",
+    dataType: "script",
+    success: function(msg){
+      $("#timehast").html(msg);
     }
   });
   $.ajax({
@@ -35,9 +75,16 @@ $(function(){
 </script>
 </head>
 <body>
-  JST : <div id="timejst"></div><br />
-  EST : <div id="timeest"></div><br />
-  this.locale(<script>document.write(timezone.name());</script>) : <div id="timethis"></div><br />
+  <table border="1">
+    <tr><td>UTC -10</td><td>HAST</td><td>Hawaii-Aleutian Standard Time	Honolulu</td><td id="timehast"></td></tr>
+    <tr><td>UTC -9</td><td>AKST</td><td>Alaska Standard Time	Anchorage</td><td id="timeakst"></td></tr>
+    <tr><td>UTC -8</td><td>PST</td><td>Pacific Standard Time	Los Angeles</td><td id="timepst"></td></tr>
+    <tr><td>UTC -7</td><td>MST</td><td>Mountain Standard Time	Salt Lake City</td><td id="timemst"></td></tr>
+    <tr><td>UTC -6</td><td>CST</td><td>Central Standard Time	Chicago</td><td id="timecst"></td></tr>
+    <tr><td>UTC -5</td><td>EST</td><td>Eastern Standard Time	New York</td><td id="timeest"></td></tr>
+    <tr></tr>
+    <tr><td>UTC +9</td><td>JST</td><td>Japan</td><td id="timejst"></td></tr>
+    <tr><td>---</td><td><script>document.write(timezone.name());</script></td><td>Japan</td><td id="timethis"></td></tr>
 
 </body>
 
