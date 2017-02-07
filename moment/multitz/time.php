@@ -18,8 +18,10 @@ date_default_timezone_set( $timezone );
 
 //$timestamp = time();
 $date = new DateTime("now",new DateTimeZone($timezone));
-echo strftime("%F %T",$date->format("U"));
-
+$json = array();
+$json["date"] = strftime("%F %T",$date->format("U"));
+$json["unixtime"] = $date->format("U");
+print json_encode($json);
 
 
 function getLocales(){
@@ -42,7 +44,6 @@ function getLocales(){
       'uk' => float 0.6
       'ru' => float 0.4
     */
-
   return $prefLocales;
 }
  ?>

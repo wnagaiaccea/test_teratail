@@ -5,71 +5,29 @@
 <script>
 var timezone = jstz.determine();
 $(function(){
-  $.ajax({
-    type: "GET",
-    url: "time.php?timezone=JST",
-    dataType: "script",
-    success: function(msg){
-      $("#timejst").html(msg);
-    }
-  });
-  $.ajax({
-    type: "GET",
-    url: "time.php?timezone=America/New_York",
-    dataType: "script",
-    success: function(msg){
-      $("#timeest").html(msg);
-    }
-  });
-  $.ajax({
-    type: "GET",
-    url: "time.php?timezone=America/Chicago",
-    dataType: "script",
-    success: function(msg){
-      $("#timecst").html(msg);
-    }
-  });
-  $.ajax({
-    type: "GET",
-    url: "time.php?timezone=America/Dawson_Creek",
-    dataType: "script",
-    success: function(msg){
-      $("#timemst").html(msg);
-    }
-  });
-  $.ajax({
-    type: "GET",
-    url: "time.php?timezone=America/Los_Angeles",
-    dataType: "script",
-    success: function(msg){
-      $("#timepst").html(msg);
-    }
-  });
-  $.ajax({
-    type: "GET",
-    url: "time.php?timezone=America/Anchorage",
-    dataType: "script",
-    success: function(msg){
-      $("#timeakst").html(msg);
-    }
-  });
-  $.ajax({
-    type: "GET",
-    url: "time.php?timezone=Pacific/Honolulu",
-    dataType: "script",
-    success: function(msg){
-      $("#timehast").html(msg);
-    }
-  });
-  $.ajax({
+  requestJSON("JST","#timejst");
+  requestJSON("America/New_York","#timeest");
+  requestJSON("America/Chicago","#timecst");
+  requestJSON("America/Dawson_Creek","#timemst");
+
+  requestJSON("America/Los_Angeles","#timepst");
+  requestJSON("America/Anchorage","#timeakst");
+  requestJSON("Pacific/Honolulu","#timehast");
+
+  $.getJSON({
     type: "GET",
     url: "time.php?timezone="+timezone.name(),
-    dataType: "script",
+    dataType: "json",
     success: function(msg){
-      $("#timethis").html(msg);
+      $("#timethis").html(msg.date);
     }
   });
 
+  function requestJSON(timezone,id){
+    $.getJSON("time.php?timezone="+timezone, function(data){
+      $(id).html(data.date);
+      });
+  }
 });
 
 </script>
